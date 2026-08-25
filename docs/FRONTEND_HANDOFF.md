@@ -90,7 +90,7 @@ Errors: 400 field validation · 401 bad credentials (`"Invalid email or password
 CategoryResponse = { id, name, scope, hidden, sortOrder,
                      subcategories: { id, name, hidden, sortOrder }[] }
 ```
-Duplicate names (case-insensitive) → 409. `scope` gates where a category may be used: `IDEAL`-scoped categories are rejected by Ideal-transaction… **correction: rejected by Actual transactions**, `ACTUAL`-scoped rejected by Ideal transactions; `BOTH` works everywhere (server enforces; surface the 400 message).
+Duplicate names (case-insensitive) → 409. `scope` gates where a category may be used: `IDEAL`-scoped categories are rejected by **Actual** transactions, `ACTUAL`-scoped categories are rejected by **Ideal** transactions, and `BOTH` works everywhere (server enforces this; surface the 400 message).
 
 ### 3.3 🎯 Ideal
 
