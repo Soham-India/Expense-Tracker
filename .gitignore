@@ -1,0 +1,32 @@
+# =====================================================================
+# Personal Finance & Expense Tracker — root .gitignore
+# RULE: never commit credentials, secrets, or environment-specific
+# configuration. Real values live ONLY in git-ignored files or env vars.
+# =====================================================================
+
+# ---- Environment & secrets (NEVER COMMIT) ----
+.env
+.env.*
+*.env
+!.env.example
+**/application-local.properties
+**/application-secret*
+**/application-prod.properties
+
+# ---- Build outputs ----
+target/
+node_modules/
+.next/
+out/
+dist/
+build/
+
+# ---- Logs ----
+*.log
+
+# ---- IDE / OS ----
+.idea/
+.vscode/
+*.iml
+.DS_Store
+Thumbs.db

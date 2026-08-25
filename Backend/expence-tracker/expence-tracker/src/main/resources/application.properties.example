@@ -1,0 +1,24 @@
+# =====================================================================
+# TEMPLATE ONLY — copy to `application-local.properties` (git-ignored)
+# or export these as real environment variables. NEVER commit real
+# values to source control.
+#
+#   PowerShell:  Copy-Item application.properties.example application-local.properties
+#   Bash:        cp application.properties.example application-local.properties
+# =====================================================================
+
+# JDBC URL of your local PostgreSQL instance.
+# Create an empty database first, e.g.: CREATE DATABASE expense_tracker;
+DB_URL=jdbc:postgresql://localhost:5432/expense_tracker
+DB_USER=postgres
+DB_PASSWORD=change-me
+
+# JWT signing secret — MUST be at least 64 chars for HS256.
+# Generate one (never reuse):
+#   PowerShell:  -join ((1..64) | ForEach-Object { '{0:x}' -f (Get-Random -Max 16) })
+#   OpenSSL:     openssl rand -hex 48
+JWT_SECRET=replace-with-a-long-random-string-min-64-chars
+JWT_EXPIRATION_MS=86400000
+
+# Comma-separated list of allowed frontend origins.
+CORS_ORIGINS=http://localhost:3000
