@@ -16,6 +16,13 @@ public interface IdealTransactionRepository extends JpaRepository<IdealTransacti
 
     Optional<IdealTransactionEntity> findByUserIdAndId(UUID userId, UUID id);
 
+    /**
+     * §13.4 recents: financial date first, then true insertion recency
+     * (created_at), with id as a pure determinism tiebreaker — UUIDs do
+     * not correlate with insertion order.
+     */
+    List<IdealTransactionEntity> findTop5ByUserIdOrderByTxnDateDescCreatedAtDescIdDesc(UUID userId);
+
     List<IdealTransactionEntity> findByUserIdAndTxnDateBetweenOrderByTxnDateDescIdDesc(
             UUID userId, LocalDate startInclusive, LocalDate endInclusive);
 

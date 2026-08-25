@@ -18,4 +18,11 @@ public interface SplitExpenseRepository extends JpaRepository<SplitExpenseEntity
             UUID userId, LocalDate startInclusive, LocalDate endInclusive);
 
     boolean existsByGroupId(UUID groupId);
+
+    /**
+     * §13.4 recents: financial date first, then true insertion recency
+     * (created_at), with id as a pure determinism tiebreaker — UUIDs do
+     * not correlate with insertion order.
+     */
+    List<SplitExpenseEntity> findTop5ByUserIdOrderByExpenseDateDescCreatedAtDescIdDesc(UUID userId);
 }

@@ -17,6 +17,13 @@ public interface ActualTransactionRepository extends JpaRepository<ActualTransac
 
     Optional<ActualTransactionEntity> findByUserIdAndId(UUID userId, UUID id);
 
+    /**
+     * §13.4 recents: financial date first, then true insertion recency
+     * (created_at), with id as a pure determinism tiebreaker — UUIDs do
+     * not correlate with insertion order.
+     */
+    List<ActualTransactionEntity> findTop5ByUserIdOrderByTxnDateDescCreatedAtDescIdDesc(UUID userId);
+
     List<ActualTransactionEntity> findByUserIdAndTxnDateBetweenOrderByTxnDateDescIdDesc(
             UUID userId, LocalDate startInclusive, LocalDate endInclusive);
 
