@@ -1,0 +1,72 @@
+@import "tailwindcss";
+
+/* Class-based dark mode: .dark on <html> (set by ThemeProvider's init script). */
+@custom-variant dark (&:where(.dark, .dark *));
+
+.dark {
+  color-scheme: dark;
+}
+
+/* Chart chrome that Recharts needs as concrete paint values (SVG attributes). */
+:root {
+  --chart-grid: #f1f5f9;
+  --chart-tick: #94a3b8;
+  --chart-tooltip-bg: #ffffff;
+  --chart-tooltip-border: #e2e8f0;
+  --chart-tooltip-text: #0f172a;
+}
+
+.dark {
+  --chart-grid: #1e293b;
+  --chart-tick: #64748b;
+  --chart-tooltip-bg: #0f172a;
+  --chart-tooltip-border: #334155;
+  --chart-tooltip-text: #f1f5f9;
+}
+
+@theme inline {
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+/*
+ * Domain accent palettes.
+ * The three systems must stay visually distinct everywhere:
+ *   ideal   (violet)  - planning values
+ *   actual  (emerald) - real money movement
+ *   splits  (amber)   - obligations between people
+ */
+@theme {
+  --color-ideal-50: #f5f3ff;
+  --color-ideal-100: #ede9fe;
+  --color-ideal-200: #ddd6fe;
+  --color-ideal-300: #c4b5fd;
+  --color-ideal-400: #a78bfa;
+  --color-ideal-500: #8b5cf6;
+  --color-ideal-600: #7c3aed;
+  --color-ideal-700: #6d28d9;
+  --color-ideal-800: #5b21b6;
+  --color-ideal-900: #4c1d95;
+
+  --color-actual-50: #ecfdf5;
+  --color-actual-100: #d1fae5;
+  --color-actual-200: #a7f3d0;
+  --color-actual-300: #6ee7b7;
+  --color-actual-400: #34d399;
+  --color-actual-500: #10b981;
+  --color-actual-600: #059669;
+  --color-actual-700: #047857;
+  --color-actual-800: #065f46;
+  --color-actual-900: #064e3b;
+
+  --color-splits-50: #fffbeb;
+  --color-splits-100: #fef3c7;
+  --color-splits-200: #fde68a;
+  --color-splits-300: #fcd34d;
+  --color-splits-400: #fbbf24;
+  --color-splits-500: #f59e0b;
+  --color-splits-600: #d97706;
+  --color-splits-700: #b45309;
+  --color-splits-800: #92400e;
+  --color-splits-900: #78350f;
+}
